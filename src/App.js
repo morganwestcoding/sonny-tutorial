@@ -17,8 +17,8 @@ function App() {
     <div>
       <h1>Welcome to my counter app</h1>
       <p>The count is {count}</p>
-      <button onClick={increment}>-</button>
-      <button onClick={decrement}>+</button>
+      <button onClick={decrement}>-</button>
+      <button onClick={increment}>+</button>
     </div>
   );
 
