@@ -1,35 +1,29 @@
-import React, { useState } from 'react';
-import './App.css';
+import React, { useEffect } from 'react'
+import "./App.css";
 
 function App() {
-  const [todos, setTodos] = useState([]);
-  const [input, setInput] = useState("");
 
-  const addTodo = e => {
-    e.preventDefault();
-    
-    console.log(`this is the input ${input}`);
-    setTodos([...todos, input])
-    setInput("");
-  };
+useEffect(() => {
+  const fetchJoke = async () => 
+    await fetch(
+      `https://api.chucknorris.io/jokes/random`
+      ).then(res => res.json())
+      .then(data => {
+      console.log(data);
+    });
+
+    fetchJoke();
+}, []);
+
 
   return (
     <div className='app'>
-      <h1>Welcome to my todo list</h1>
-
-      <form>
-        <input value={input} onChange={e => setInput(e.target.value)} type='text'/>
-
-        <button type="submit" onClick={addTodo}>Add todo</button>
-
-      </form>
-     
-      <h2>List the Todos</h2>
-      {todos.map((todo) => (
-        <p>{todo}</p>
-      ))}
+      <center>
+        <h1>The Joke Generator</h1>
+        <button>Generate Joke</button>
+      </center>
     </div>
-  );
+  )
 }
 
 export default App
